@@ -6,6 +6,7 @@ opt.winbar = ""
 opt.showmode = true
 opt.guicursor = ""
 opt.cursorline = true
+opt.cursorlineopt = "number"
 opt.cursorcolumn = false
 opt.relativenumber = true
 opt.number = true

@@ -3,6 +3,8 @@ return {
   name = "catppuccin",
   priority = 1000,
   config = function()
+    local colors = require("catppuccin.palettes").get_palette("mocha")
+
     require("catppuccin").setup({
       flavour = "mocha", -- latte, frappe, macchiato, mocha
       background = { -- :h background
@@ -36,7 +38,10 @@ return {
         -- miscs = {}, -- Uncomment to turn off hard-coded styles
       },
       color_overrides = {},
-      custom_highlights = {},
+      custom_highlights = {
+        LineNr = { fg = colors.overlay1, bg = colors.none },
+        CursorLineNr = { fg = colors.maroon, bg = colors.none },
+      },
       default_integrations = true,
       integrations = {
         cmp = true,
@@ -55,7 +60,8 @@ return {
     -- setup must be called before loading
     vim.cmd.colorscheme("catppuccin")
 
-		vim.cmd("highlight Pmenu guibg=NONE") -- window transparency
-		vim.diagnostic.config({ float = { border = "rounded", scope = "line" } }) -- diagnostic boarder
+    vim.cmd([[autocmd VimEnter * highlight CursorLine guibg=None]])
+
+    vim.diagnostic.config({ float = { border = "rounded", scope = "line" } }) -- diagnostic boarder
   end,
 }
