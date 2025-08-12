@@ -61,6 +61,11 @@ return {
     vim.cmd.colorscheme("catppuccin")
 
     vim.cmd([[autocmd VimEnter * highlight CursorLine guibg=None]])
+    vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+    vim.api.nvim_set_hl(0, "FloatBorder", { fg = colors.blue, bg = "none" })
+    vim.api.nvim_set_hl(0, "FloatTitle", { fg = colors.mauve, bg = "none" })
+    vim.api.nvim_set_hl(0, "FloatFooter", { fg = colors.flamingo, bg = "none" })
 
     vim.diagnostic.config({ float = { border = "rounded", scope = "line" } }) -- diagnostic boarder
   end,

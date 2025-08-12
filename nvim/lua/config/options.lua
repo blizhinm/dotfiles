@@ -10,6 +10,7 @@ opt.cursorlineopt = "number"
 opt.cursorcolumn = false
 opt.relativenumber = true
 opt.number = true
+opt.winborder = "rounded"
 
 -- tabs & indentation
 opt.tabstop = 2

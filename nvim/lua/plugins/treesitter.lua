@@ -5,7 +5,7 @@ return {
     dependencies = {
         "windwp/nvim-ts-autotag",
         -- :TSInstall markdown markdown_inline
-		"OXY2DEV/markview.nvim"
+        "OXY2DEV/markview.nvim"
     },
     config = function()
         -- import nvim-treesitter plugin
