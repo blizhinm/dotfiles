@@ -44,20 +44,20 @@ wezterm.on("toggle-opacity", function(window)
 	local overrides = window:get_config_overrides() or {}
 
 	if overrides.window_background_opacity == 1 then
-		style.background[1].opacity = 0.5
+    overrides.background = {}
 		overrides.foreground_text_hsb = {
-			brightness = 0.75,
+			brightness = 0.5,
 		}
 		overrides.window_background_opacity = 0.5
+    overrides.text_background_opacity = 0.66
 	else
-		style.background[1].opacity = 1
+    overrides.background = style.background
 		overrides.foreground_text_hsb = {
 			brightness = 1,
 		}
 		overrides.window_background_opacity = 1
+    overrides.text_background_opacity = 1
 	end
-
-	overrides.background = style.background
 
 	window:set_config_overrides(overrides)
 end)
