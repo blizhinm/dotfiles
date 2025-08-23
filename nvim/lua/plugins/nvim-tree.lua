@@ -1,3 +1,5 @@
+local screen_util = require("util.screen")
+
 return {
   "nvim-tree/nvim-tree.lua",
   dependencies = {
@@ -5,6 +7,7 @@ return {
   },
   config = function()
     local nvimtree = require("nvim-tree")
+    local sizes = screen_util.get_window_sizes_by_ratios({ w = 0.7, h = 0.9 })
 
     -- recommended settings from nvim-tree documentation
     vim.g.loaded_netrw = 1
@@ -36,20 +39,20 @@ return {
         )
       end,
       view = {
-        -- float = {
-        -- 	enable = true,
-        -- 	open_win_config = function()
-        -- 		return {
-        -- 			border = "rounded",
-        -- 			relative = "editor",
-        -- 			row = center_y,
-        -- 			col = center_x,
-        -- 			width = window_w_int,
-        -- 			height = window_h_int,
-        -- 		}
-        -- 	end,
-        -- },
-        width = 55,
+        float = {
+        	enable = true,
+        	open_win_config = function()
+        		return {
+        			border = "rounded",
+        			relative = "editor",
+        			row = sizes.row,
+        			col = sizes.col,
+        			width = sizes.width,
+        			height = sizes.height,
+        		}
+        	end,
+        },
+        width = 40,
         relativenumber = true,
       },
       modified = {

@@ -4,6 +4,8 @@ return {
   config = function()
     local lint = require("lint")
 
+    vim.env.ESLINT_D_PPID = vim.fn.getpid()
+
     -- ESLINT_D_ROOT=*local node_modules folder* nvim .
     lint.linters_by_ft = {
       javascript = { "eslint_d" },
@@ -17,7 +19,7 @@ return {
       { "BufEnter", "TextChanged" },
       { --  "BufEnter", "BufWritePost", "InsertLeave", "TextChanged"
         callback = function()
-          lint.try_lint()
+          lint.try_lint(nil, { cwd = os.getenv("ESLINT_D_ROOT") and "./frontend" or "." })
         end,
       }
     )

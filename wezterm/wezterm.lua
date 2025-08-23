@@ -14,7 +14,7 @@ end
 
 config.front_end = "OpenGL"
 config.max_fps = 60
-config.animation_fps = 30
+config.animation_fps = 15
 
 -- config.wsl_domains = {
 --   {
@@ -44,20 +44,24 @@ wezterm.on("toggle-opacity", function(window)
 	local overrides = window:get_config_overrides() or {}
 
 	if overrides.window_background_opacity == 1 then
-    overrides.background = {}
+		overrides.background = {}
 		overrides.foreground_text_hsb = {
 			brightness = 0.5,
 		}
 		overrides.window_background_opacity = 0.5
-    overrides.text_background_opacity = 0.66
+		overrides.text_background_opacity = 0.66
+    -- style.background[1].opacity = 0.5
 	else
     overrides.background = style.background
 		overrides.foreground_text_hsb = {
 			brightness = 1,
 		}
 		overrides.window_background_opacity = 1
-    overrides.text_background_opacity = 1
+		overrides.text_background_opacity = 1
+    -- style.background[1].opacity = 1
 	end
+
+	-- overrides.background = style.background
 
 	window:set_config_overrides(overrides)
 end)

@@ -3,7 +3,7 @@ return {
   branch = "0.1.x",
   dependencies = {
     "nvim-lua/plenary.nvim",
-    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    -- { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     "nvim-tree/nvim-web-devicons",
     "folke/todo-comments.nvim",
   },
@@ -12,16 +12,18 @@ return {
     local actions = require("telescope.actions")
 
     telescope.setup({
-      -- pickers = {
-      -- 	find_files = {
-      -- 		theme = "ivy",
-      -- 	},
-      -- },
+      pickers = {
+        find_files = {
+          -- theme = "ivy",
+          find_command = { "rg", "--files", "--hidden" },
+        },
+      },
       defaults = {
         layout_config = {
           horizontal = {
             height = 0.9,
-            width = 0.8,
+            width = 0.9,
+            preview_width = 0.5,
           },
         },
         path_display = { { tuncate = 3 } },

@@ -4,9 +4,11 @@ local module = {}
 local background = {
 	{
 		source = {
+			-- File = wezterm.config_dir .. "/wallpapers/wallpaper.png",
 			-- File = wezterm.config_dir .. "/wallpapers/wallpaper1.jpg",
 			-- File = wezterm.config_dir .. "/wallpapers/wallpaper3.jpg",
 			-- File = wezterm.config_dir .. "/wallpapers/wallpaper4.jpg",
+			-- File = wezterm.config_dir .. "/wallpapers/night-city-pixel-art-1.jpg",
 			File = wezterm.config_dir .. "/wallpapers/back.gif",
 			-- File = wezterm.config_dir .. "/wallpapers/back5.gif",
 		},
@@ -15,7 +17,7 @@ local background = {
 		horizontal_align = "Center",
 		opacity = 1,
 		hsb = {
-			brightness = 0.5,
+			brightness = 0.3,
 		},
 	},
 }
@@ -31,6 +33,7 @@ function module.apply_to_config(config)
 	config.default_cursor_style = "BlinkingBlock"
 	config.cursor_blink_ease_in = "Linear"
 	config.cursor_blink_ease_out = "Linear"
+  config.cursor_blink_rate = 800
 
 	config.use_fancy_tab_bar = false
 	config.window_frame = {
@@ -45,7 +48,7 @@ function module.apply_to_config(config)
 	config.tab_and_split_indices_are_zero_based = false
 	config.tab_bar_at_bottom = false
 	config.tab_max_width = 2
-	-- config.window_decorations = "RESIZE"
+	config.window_decorations = "RESIZE"
 	config.window_background_opacity = 1
 	config.text_background_opacity = 1
 
