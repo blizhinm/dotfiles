@@ -4,6 +4,7 @@ return {
   config = function()
     local lint = require("lint")
 
+    -- ESLINT_D_ROOT=*local node_modules folder* nvim .
     lint.linters_by_ft = {
       javascript = { "eslint_d" },
       typescript = { "eslint_d" },
