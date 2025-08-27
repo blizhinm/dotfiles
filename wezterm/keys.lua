@@ -23,7 +23,10 @@ function module.apply_to_config(config)
 		{
 			key = "k",
 			mods = "CMD",
-			action = action.ClearScrollback("ScrollbackAndViewport"),
+			action = action.Multiple({
+				action.ClearScrollback("ScrollbackAndViewport"),
+				action.SendKey({ key = "L", mods = "CTRL" }),
+			}),
 		},
 		{
 			key = "o",
