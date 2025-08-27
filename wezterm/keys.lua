@@ -21,6 +21,11 @@ function module.apply_to_config(config)
 		--   action = action.PasteFrom("Clipboard"),
 		-- },
 		{
+			key = "k",
+			mods = "CMD",
+			action = action.ClearScrollback("ScrollbackAndViewport"),
+		},
+		{
 			key = "o",
 			mods = "LEADER",
 			action = action.EmitEvent("toggle-opacity"),
