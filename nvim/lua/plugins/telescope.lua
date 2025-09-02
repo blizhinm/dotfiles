@@ -14,8 +14,13 @@ return {
     telescope.setup({
       pickers = {
         find_files = {
-          -- theme = "ivy",
-          find_command = { "rg", "--files", "--hidden" },
+          hidden = true,
+        },
+        grep_string = {
+          additional_args = { "--hidden" },
+        },
+        live_grep = {
+          additional_args = { "--hidden" },
         },
       },
       defaults = {

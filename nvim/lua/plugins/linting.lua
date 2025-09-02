@@ -19,13 +19,17 @@ return {
       { "BufEnter", "TextChanged" },
       { --  "BufEnter", "BufWritePost", "InsertLeave", "TextChanged"
         callback = function()
-          lint.try_lint(nil, { cwd = os.getenv("ESLINT_D_ROOT") and "./frontend" or "." })
+          lint.try_lint(
+            nil,
+            { cwd = os.getenv("ESLINT_D_ROOT") and "./frontend" or "." }
+          )
         end,
       }
     )
 
     vim.keymap.set("n", "<leader>l", function()
-      lint.try_lint()
+      -- lint.try_lint()
+      lint.try_lint(nil, { cwd = os.getenv("ESLINT_D_ROOT") and "./frontend" or "." })
     end, { desc = "Trigger linting for current file" })
 
     -- Set pylint to work in virtualenv

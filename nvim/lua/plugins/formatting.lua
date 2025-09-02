@@ -27,11 +27,11 @@ return {
       -- 	async = false,
       -- 	timeout_ms = 1000,
       -- },
-      formatters = {
-        stylua = {
-          prepend_args = { "--config-path", "/home/maxx/.config/nvim/.stylua.toml" },
-        },
-      },
+      -- formatters = {
+      --   stylua = {
+      --     prepend_args = { "--config-path", "/home/maxx/.config/nvim/.stylua.toml" },
+      --   },
+      -- },
     })
 
     vim.keymap.set({ "n", "v" }, "<leader>cf", function()

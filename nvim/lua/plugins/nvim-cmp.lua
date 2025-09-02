@@ -36,7 +36,7 @@ return {
 				}),
 			},
 			completion = {
-				autocomplete = false,
+				-- autocomplete = false,
 				completeopt = "menu,menuone,preview,noselect",
 			},
 			snippet = { -- configure how nvim-cmp interacts with snippet engine
@@ -76,9 +76,9 @@ return {
 			-- sources for autocompletion
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
-				{ name = "luasnip" }, -- snippets
 				{ name = "buffer" }, -- text within current buffer
 				{ name = "path" }, -- file system paths
+				{ name = "luasnip" }, -- snippets
 			}),
 
 			-- configure lspkind for vs-code like pictograms in completion menu
