@@ -39,19 +39,19 @@ return {
         )
       end,
       view = {
-        float = {
-        	enable = true,
-        	open_win_config = function()
-        		return {
-        			border = "rounded",
-        			relative = "editor",
-        			row = sizes.row,
-        			col = sizes.col,
-        			width = sizes.width,
-        			height = sizes.height,
-        		}
-        	end,
-        },
+        -- float = {
+        -- 	enable = true,
+        -- 	open_win_config = function()
+        -- 		return {
+        -- 			border = "rounded",
+        -- 			relative = "editor",
+        -- 			row = sizes.row,
+        -- 			col = sizes.col,
+        -- 			width = sizes.width,
+        -- 			height = sizes.height,
+        -- 		}
+        -- 	end,
+        -- },
         width = 40,
         relativenumber = true,
       },
@@ -76,7 +76,7 @@ return {
         open_file = {
           quit_on_open = false,
           eject = false,
-          resize_window = false,
+          resize_window = true,
           -- window_picker = {
           -- 	enable = false,
           -- },
