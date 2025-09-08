@@ -41,20 +41,20 @@ set -x FZF_DEFAULT_OPTS "$FZF_DEFAULT_OPTS \
   --layout=default \
 	--color=bg:-1 \
   --color=bg+:#313244 \
-	--color=spinner:#F5E0DC \
-	--color=hl:#f5c2e7 \
-  --color=hl+:#f5c2e7 \
+	--color=spinner:#f2cdcd \
+	--color=hl:#eba0ac \
+  --color=hl+:#eba0ac \
   --color=fg:#CDD6F4 \
   --color=fg+:#CDD6F4 \
 	--color=header:#F38BA8 \
-	--color=info:#94e2d5 \
-	--color=pointer:#CBA6F7 \
+	--color=info:#89dceb \
+	--color=pointer:#f5e0dc \
   --color=marker:#B4BEFE \
 	--color=prompt:#eba0ac \
 	--color=query:#CDD6F4 \
   --color=selected-bg:#45475A \
-  --color=border:#fab387 \
+  --color=border:#89b4fa \
 	--color=label:#CDD6F4 \
-  --color=separator:#CBA6F7 \
+  --color=separator:#f2cdcd \
   --color=gutter:-1 \
 "
