@@ -49,18 +49,28 @@ style.apply_to_config(config)
 
 wezterm.on("toggle-opacity", function(window)
   local overrides = window:get_config_overrides() or {}
+  local bg_color = "rgba(30, 30, 46, 0.9)"
 
   if overrides.window_background_opacity == nil then
     overrides.window_background_opacity = 1
   end
 
+  if overrides.colors == nil then
+    overrides.colors = config.colors
+  end
+
   if overrides.window_background_opacity == 1 then
     overrides.background = {}
     overrides.foreground_text_hsb = {
-      brightness = 0.5,
+      brightness = 0.66,
     }
-    overrides.window_background_opacity = 0.5
-    overrides.text_background_opacity = 0.66
+    overrides.window_background_opacity = 0.75
+    overrides.text_background_opacity = 0.85
+
+    overrides.colors.tab_bar.background = bg_color
+    overrides.colors.tab_bar.active_tab.bg_color = bg_color
+    overrides.colors.tab_bar.inactive_tab.bg_color = bg_color
+    overrides.colors.tab_bar.inactive_tab_hover.bg_color = bg_color
   else
     overrides.background = style.background
     overrides.foreground_text_hsb = {
@@ -68,6 +78,11 @@ wezterm.on("toggle-opacity", function(window)
     }
     overrides.window_background_opacity = 1
     overrides.text_background_opacity = 1
+
+    overrides.colors.tab_bar.background = nil
+    overrides.colors.tab_bar.active_tab.bg_color = nil
+    overrides.colors.tab_bar.inactive_tab.bg_color = nil
+    overrides.colors.tab_bar.inactive_tab_hover.bg_color = nil
   end
 
   window:set_config_overrides(overrides)
