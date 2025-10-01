@@ -79,10 +79,10 @@ wezterm.on("toggle-opacity", function(window)
     overrides.window_background_opacity = 1
     overrides.text_background_opacity = 1
 
-    overrides.colors.tab_bar.background = nil
-    overrides.colors.tab_bar.active_tab.bg_color = nil
-    overrides.colors.tab_bar.inactive_tab.bg_color = nil
-    overrides.colors.tab_bar.inactive_tab_hover.bg_color = nil
+    overrides.colors.tab_bar.background = "transparent"
+    overrides.colors.tab_bar.active_tab.bg_color = "transparent"
+    overrides.colors.tab_bar.inactive_tab.bg_color = "transparent"
+    overrides.colors.tab_bar.inactive_tab_hover.bg_color = "transparent"
   end
 
   window:set_config_overrides(overrides)
