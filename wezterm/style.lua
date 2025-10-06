@@ -12,14 +12,15 @@ local background = {
       -- File = wezterm.config_dir .. "/wallpapers/back.gif",
       -- File = wezterm.config_dir .. "/wallpapers/back5.gif",
       -- File = wezterm.config_dir .. "/wallpapers/141227-aestheticwp.jpg",
-      File = wezterm.config_dir .. "/wallpapers/322834-aestheticwp.png",
+      -- File = wezterm.config_dir .. "/wallpapers/322834-aestheticwp.png",
+      File = wezterm.config_dir .. "/wallpapers/jap-rainy-street-pxl.gif",
     },
     attachment = "Fixed",
     vertical_align = "Bottom",
     horizontal_align = "Center",
     opacity = 1,
     hsb = {
-      brightness = 0.05,
+      brightness = 0.15,
     },
   },
 }
