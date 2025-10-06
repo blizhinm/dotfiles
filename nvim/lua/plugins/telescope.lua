@@ -1,3 +1,20 @@
+local function with_nvim_tree(fn)
+  -- vim.cmd("NvimTreeClose")
+
+  if vim.bo.filetype == "NvimTree" then
+    vim.cmd("wincmd p") -- or 'wincmd p'
+  end
+
+  if type(fn) == "function" then
+    fn()
+  else
+    vim.notify(
+      "with_nvimtree_closed: expected a function, got " .. type(fn),
+      vim.log.levels.ERROR
+    )
+  end
+end
+
 return {
   "nvim-telescope/telescope.nvim",
   branch = "0.1.x",
@@ -10,6 +27,7 @@ return {
   config = function()
     local telescope = require("telescope")
     local actions = require("telescope.actions")
+    local tbuiltin = require("telescope.builtin")
 
     telescope.setup({
       pickers = {
@@ -66,48 +84,34 @@ return {
     -- set keymaps
     local keymap = vim.keymap -- for conciseness
 
-    keymap.set(
-      "n",
-      "<leader>tx",
-      require("telescope.builtin").resume,
-      { desc = "Toggle telescope" }
-    )
-    keymap.set(
-      "n",
-      "<leader>tf",
-      "<cmd>Telescope find_files<cr>",
-      { desc = "Fuzzy find files in cwd" }
-    )
-    keymap.set(
-      "n",
-      "<leader>tb",
-      "<cmd>Telescope buffers sort_mru=true sort_lastused=true initial_mode=normal theme=ivy<cr>",
-      { desc = "Fuzzy find buffers" }
-    )
-    keymap.set(
-      "n",
-      "<leader>tr",
-      "<cmd>Telescope oldfiles<cr>",
-      { desc = "Fuzzy find recent files" }
-    )
-    keymap.set(
-      "n",
-      "<leader>ts",
-      "<cmd>Telescope live_grep<cr>",
-      { desc = "Find string in cwd" }
-    )
-    keymap.set(
-      "n",
-      "<leader>tc",
-      "<cmd>Telescope grep_string<cr>",
-      { desc = "Find string under cursor in cwd" }
-    )
-    keymap.set(
-      "n",
-      "<leader>th",
-      "<cmd>Telescope help_tags<cr>",
-      { desc = "Help tags" }
-    )
+    keymap.set("n", "<leader>tx", function()
+      with_nvim_tree(tbuiltin.resume)
+    end, { desc = "Toggle telescope" })
+    keymap.set("n", "<leader>tf", function()
+      with_nvim_tree(tbuiltin.find_files)
+    end, { desc = "Fuzzy find files in cwd" })
+    keymap.set("n", "<leader>tb", function()
+      with_nvim_tree(function()
+        tbuiltin.buffers({
+          sort_mru = true,
+          sort_lastused = true,
+          initial_mode = "insert",
+          theme = "ivy",
+        })
+      end)
+    end, { desc = "Fuzzy find buffers" })
+    keymap.set("n", "<leader>tr", function()
+      with_nvim_tree(tbuiltin.oldfiles)
+    end, { desc = "Fuzzy find recent files" })
+    keymap.set("n", "<leader>ts", function()
+      with_nvim_tree(tbuiltin.live_grep)
+    end, { desc = "Find string in cwd" })
+    keymap.set("n", "<leader>tc", function()
+      with_nvim_tree(tbuiltin.grep_string)
+    end, { desc = "Find string under cursor in cwd" })
+    keymap.set("n", "<leader>th", function()
+      with_nvim_tree(tbuiltin.help_tags)
+    end, { desc = "Help tags" })
     keymap.set("n", "<leader>tt", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
 
     vim.cmd("autocmd User TelescopePreviewerLoaded setlocal number")
