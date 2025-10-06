@@ -2,6 +2,7 @@
 local wezterm = require("wezterm")
 local keys = require("keys")
 local style = require("style")
+local events_handlers = require("events-handlers")
 
 -- This table will hold the configuration.
 local config = {}
@@ -40,54 +41,7 @@ config.skip_close_confirmation_for_processes_named =
 -- applying config modules
 keys.apply_to_config(config)
 style.apply_to_config(config)
-
--- wezterm.on("gui-startup", function(cmd)
--- 	local _, _, window = wezterm.mux.spawn_window(cmd or {})
--- 	window:gui_window():maximize()
--- 	window:toggle_fullscreen()
--- end)
-
-wezterm.on("toggle-opacity", function(window)
-  local overrides = window:get_config_overrides() or {}
-  local bg_color = "rgba(30, 30, 46, 0.9)"
-  local transparent = "transparent"
-
-  if overrides.window_background_opacity == nil then
-    overrides.window_background_opacity = config.window_background_opacity
-  end
-
-  if overrides.colors == nil then
-    overrides.colors = config.colors
-  end
-
-  if overrides.window_background_opacity == 1 then
-    overrides.background = {}
-    overrides.foreground_text_hsb = {
-      brightness = 0.5,
-    }
-    overrides.window_background_opacity = 0.75
-    overrides.text_background_opacity = 0.85
-
-    overrides.colors.tab_bar.background = bg_color
-    overrides.colors.tab_bar.active_tab.bg_color = bg_color
-    overrides.colors.tab_bar.inactive_tab.bg_color = bg_color
-    overrides.colors.tab_bar.inactive_tab_hover.bg_color = bg_color
-  else
-    overrides.background = style.background
-    overrides.foreground_text_hsb = {
-      brightness = 1,
-    }
-    overrides.window_background_opacity = 1
-    overrides.text_background_opacity = 1
-
-    overrides.colors.tab_bar.background = transparent
-    overrides.colors.tab_bar.active_tab.bg_color = transparent
-    overrides.colors.tab_bar.inactive_tab.bg_color = transparent
-    overrides.colors.tab_bar.inactive_tab_hover.bg_color = transparent
-  end
-
-  window:set_config_overrides(overrides)
-end)
+events_handlers.apply_to_config(config)
 
 -- and finally, return the configuration to wezterm
 return config
