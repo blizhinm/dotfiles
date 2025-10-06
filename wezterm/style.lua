@@ -9,15 +9,17 @@ local background = {
       -- File = wezterm.config_dir .. "/wallpapers/wallpaper3.jpg",
       -- File = wezterm.config_dir .. "/wallpapers/wallpaper4.jpg",
       -- File = wezterm.config_dir .. "/wallpapers/night-city-pixel-art-1.jpg",
-      File = wezterm.config_dir .. "/wallpapers/back.gif",
+      -- File = wezterm.config_dir .. "/wallpapers/back.gif",
       -- File = wezterm.config_dir .. "/wallpapers/back5.gif",
+      -- File = wezterm.config_dir .. "/wallpapers/141227-aestheticwp.jpg",
+      File = wezterm.config_dir .. "/wallpapers/322834-aestheticwp.png",
     },
     attachment = "Fixed",
     vertical_align = "Bottom",
     horizontal_align = "Center",
     opacity = 1,
     hsb = {
-      brightness = 0.25,
+      brightness = 0.05,
     },
   },
 }
@@ -101,12 +103,12 @@ function module.apply_to_config(config)
 
       -- The color of the strip that goes along the top of the window
       -- (does not apply when fancy tab bar is in use)
-      background = "rgba(30, 30, 46, 0.9)",
+      background = "transparent",
 
       -- The active tab is the one that has focus in the window
       active_tab = {
         -- The color of the background area for the tab
-        bg_color = "rgba(30, 30, 46, 0.9)", -- "#0b0022",
+        bg_color = "transparent", -- "#0b0022",
         -- The color of the text for the tab
         -- fg_color = "#d0d0d0",
         -- fg_color = "#b4befe",
@@ -134,14 +136,14 @@ function module.apply_to_config(config)
 
       -- Inactive tabs are the tabs that do not have focus
       inactive_tab = {
-        bg_color = "rgba(30, 30, 46, 0.9)",
+        bg_color = "transparent",
         fg_color = "#606060",
       },
 
       -- You can configure some alternate styling when the mouse pointer
       -- moves over inactive tabs
       inactive_tab_hover = {
-        bg_color = "rgba(30, 30, 46, 0.9)",
+        bg_color = "transparent",
         fg_color = "#a0a0a0",
         italic = true,
       },
