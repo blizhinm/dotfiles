@@ -1,29 +1,21 @@
-local function topFocus(app)
+local function focus(app)
   -- get screen where you are with your mouse
-  local screen = hs.mouse.getCurrentScreen()
+  -- local screen = hs.mouse.getCurrentScreen()
   -- get main window
-  local app_window = app:mainWindow()
-  -- move app to current screen
-  app_window:moveToScreen(screen)
-  -- get max coordinates
-  local max = screen:fullFrame()
-  -- get main window frame
-  local f = app_window:frame()
-  -- set dimension of frame
-  f.x = max.x
-  f.y = max.y
-  f.w = max.w
-  f.h = max.h
-  -- set new frame dimension after a little delay
-  hs.timer.doAfter(0.2, function()
-    app_window:setFrame(f)
-  end)
-  -- focus to app
-  app_window:focus()
+  -- local win = app:mainWindow()
+
+  -- win:setLevel(hs.drawing.windowLevels.floating)
+
+  -- hs.timer.doAfter(0.2, function()
+  -- app:unhide()
+  app:activate(true)
+  -- win:raise()
+  -- win:focus()
+  -- end)
+  -- app_window:moveToScreen(screen)
 end
 
 local function bindHotkey(appName, key)
-  -- bind to CTRL + key
   hs.hotkey.bind({ "cmd", "alt" }, key, function()
     -- find app
     local app = hs.application.find(appName)
@@ -31,17 +23,14 @@ local function bindHotkey(appName, key)
     if app then
       -- if app is on front
       if app:isFrontmost() then
-        -- hide app
         app:hide()
       else
-        -- launch function to resize window and focus
-        topFocus(app)
+        focus(app)
       end
     else
       -- launch app
       app = hs.application.open(appName, 2, true)
-      -- launch function to resize window and focus
-      topFocus(app)
+      focus(app)
     end
   end)
 end
