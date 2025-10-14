@@ -4,8 +4,19 @@ vim.g.mapleader = " "
 
 keymap.set("x", "<leader>p", '"_dP') -- keep register when pasting/deleting
 keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
-keymap.set("n", "<C-d>", "<C-d>zz")
-keymap.set("n", "<C-u>", "<C-u>zz")
+-- keymap.set("n", "<C-d>", "<C-d>zz")
+-- keymap.set("n", "<C-u>", "<C-u>zz")
+
+vim.keymap.set("n", "<C-u>", function()
+  local lines = math.floor(vim.api.nvim_win_get_height(0) / 4)
+  vim.cmd("normal! " .. lines .. "k")
+end, { silent = true })
+
+vim.keymap.set("n", "<C-d>", function()
+  local lines = math.floor(vim.api.nvim_win_get_height(0) / 4)
+  vim.cmd("normal! " .. lines .. "j")
+end, { silent = true })
+
 keymap.set("n", "n", "nzz")
 keymap.set("n", "N", "Nzz")
 
