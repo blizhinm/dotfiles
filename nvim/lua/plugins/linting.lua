@@ -13,6 +13,7 @@ return {
       javascriptreact = { "eslint_d" },
       typescriptreact = { "eslint_d" },
       python = { "pylint" },
+      kotlin = { "ktlint" },
     }
 
     vim.api.nvim_create_autocmd(
@@ -33,7 +34,7 @@ return {
     end, { desc = "Trigger linting for current file" })
 
     -- Set pylint to work in virtualenv
-    require("lint").linters.pylint.cmd = "python"
-    require("lint").linters.pylint.args = { "-m", "pylint", "-f", "json" }
+    lint.linters.pylint.cmd = "python"
+    lint.linters.pylint.args = { "-m", "pylint", "-f", "json" }
   end,
 }
