@@ -5,23 +5,21 @@ local background = {
   {
     source = {
       -- File = wezterm.config_dir .. "/wallpapers/wallpaper.png",
-      -- File = wezterm.config_dir .. "/wallpapers/wallpaper1.jpg",
+      File = wezterm.config_dir .. "/wallpapers/wallpaper1.jpg",
       -- File = wezterm.config_dir .. "/wallpapers/wallpaper3.jpg",
-      -- File = wezterm.config_dir .. "/wallpapers/wallpaper4.jpg",
-      -- File = wezterm.config_dir .. "/wallpapers/night-city-pixel-art-1.jpg",
       -- File = wezterm.config_dir .. "/wallpapers/back.gif",
       -- File = wezterm.config_dir .. "/wallpapers/back5.gif",
       -- File = wezterm.config_dir .. "/wallpapers/237436-aestheticwp.png",
       -- File = wezterm.config_dir .. "/wallpapers/141227-aestheticwp.jpg",
       -- File = wezterm.config_dir .. "/wallpapers/237414-aestheticwp.gif",
-      File = wezterm.config_dir .. "/wallpapers/jap-rainy-street-pxl.gif",
+      -- File = wezterm.config_dir .. "/wallpapers/jap-rainy-street-pxl.gif",
     },
     attachment = "Fixed",
     vertical_align = "Bottom",
     horizontal_align = "Center",
     opacity = 1,
     hsb = {
-      brightness = 0.15,
+      brightness = 0.3,
     },
   },
 }
@@ -52,7 +50,7 @@ function module.apply_to_config(config)
   config.tab_and_split_indices_are_zero_based = false
   config.tab_bar_at_bottom = false
   config.tab_max_width = 2
-  config.window_decorations = "RESIZE"
+  config.window_decorations = "RESIZE|MACOS_FORCE_DISABLE_SHADOW"
   config.window_background_opacity = 1
   config.text_background_opacity = 1
 
@@ -72,32 +70,32 @@ function module.apply_to_config(config)
   config.background = background
 
   config.colors = {
-    -- foreground = "#7FA8A8",
+    -- foreground = "#7a9b9d",
     -- background = "#001015",
     -- cursor_bg = "#4afcd6",
     -- cursor_border = "#4afcd6",
     -- cursor_fg = "#031413",
-    -- selection_bg = "#415555",
+    -- selection_bg = "#405555",
     -- selection_fg = "#5afad6",
     -- ansi = {
-    --   "#012126",
-    --   "#b2302d",
-    --   "#00a941",
-    --   "#5e8baa",
-    --   "#449a86",
-    --   "#00599d",
-    --   "#5d7e19",
-    --   "#7FA8A8",
+    --   "#384451",
+    --   "#B2302D",
+    --   "#00A941",
+    --   "#5E8BAA",
+    --   "#449A86",
+    --   "#00599D",
+    --   "#5D7E19",
+    --   "#405555",
     -- },
     -- brights = {
-    --   "#36414D",
-    --   "#ff4242",
-    --   "#2aea5e",
-    --   "#8ed4fd",
-    --   "#61d5ba",
-    --   "#1298ff",
-    --   "#98d028",
-    --   "#58fbd6",
+    --   "#7a9b9d",
+    --   "#FF4242",
+    --   "#2AEA5E",
+    --   "#8ED4FD",
+    --   "#61D5BA",
+    --   "#1298FF",
+    --   "#98D028",
+    --   "#58FBD6",
     -- },
     tab_bar = {
       -- The color of the inactive tab bar edge/divider
@@ -110,12 +108,12 @@ function module.apply_to_config(config)
       -- The active tab is the one that has focus in the window
       active_tab = {
         -- The color of the background area for the tab
-        bg_color = "transparent", -- "#0b0022",
+        bg_color = "transparent",
         -- The color of the text for the tab
         -- fg_color = "#d0d0d0",
-        -- fg_color = "#b4befe",
+        fg_color = "#f5e0dc",
         -- fg_color = "#f2cdcd",
-        fg_color = "#c099ff",
+        -- fg_color = "#c099ff",
 
         -- Specify whether you want "Half", "Normal" or "Bold" intensity for the
         -- label shown for this tab.
@@ -166,7 +164,8 @@ function module.apply_to_config(config)
     },
   }
 
-  config.color_scheme = "Catppuccin Mocha"
+  config.color_scheme = "Pnevma"
+  -- config.color_scheme = "Catppuccin Mocha"
   -- config.color_scheme = "Tokyo Night Moon"
 end
 

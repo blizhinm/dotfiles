@@ -14,6 +14,33 @@ set -x FZF_ALT_C_OPTS "--preview 'eza --icons=always --tree --color=always {} | 
 #   --ansi \
 #   --border \
 #   --layout=default \
+# 	--color=bg:-1 \
+#   --color=bg+:#384451 \
+# 	--color=spinner:#5afad6 \
+# 	--color=hl:#4afcd6 \
+#   --color=hl+:#4afcd6 \
+#   --color=fg:#7a9b9d \
+#   --color=fg+:#7a9b9d \
+# 	--color=header:#98D028 \
+# 	--color=info:#8ED4FD \
+# 	--color=pointer:#2AEA5E \
+#   --color=marker:#98D028 \
+# 	--color=prompt:#2AEA5E \
+# 	--color=query:#61D5BA \
+#   --color=selected-bg:#384451 \
+#   --color=border:#5E8BAA \
+# 	--color=label:#5afad6 \
+#   --color=separator:#5E8BAA \
+#   --color=gutter:-1 \
+# "
+
+# set -x FZF_DEFAULT_OPTS "$FZF_DEFAULT_OPTS \
+#   --height=90% \
+#   --highlight-line \
+#   --info=inline-right \
+#   --ansi \
+#   --border \
+#   --layout=default \
 #   --color=bg+:#283457 \
 #   --color=bg:-1 \
 #   --color=border:#27a1b9 \
