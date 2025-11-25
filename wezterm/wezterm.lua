@@ -43,5 +43,14 @@ keys.apply_to_config(config)
 style.apply_to_config(config)
 events_handlers.apply_to_config(config)
 
+-- config.set_environment_variables = {
+--   http_proxy = "socks5://127.0.0.1:1086",
+--   https_proxy = "socks5://127.0.0.1:1086",
+--   all_proxy = "socks5://127.0.0.1:1086",
+--   HTTP_PROXY = "socks5://127.0.0.1:1086",
+--   HTTPS_PROXY = "socks5://127.0.0.1:1086",
+--   ALL_PROXY = "socks5://127.0.0.1:1086",
+-- }
+
 -- and finally, return the configuration to wezterm
 return config
