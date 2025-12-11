@@ -164,8 +164,8 @@ function module.apply_to_config(config)
     },
   }
 
-  config.color_scheme = "Pnevma"
-  -- config.color_scheme = "Catppuccin Mocha"
+  -- config.color_scheme = "Pnevma"
+  config.color_scheme = "Catppuccin Mocha"
   -- config.color_scheme = "Tokyo Night Moon"
 end
 

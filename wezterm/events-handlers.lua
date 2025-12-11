@@ -23,8 +23,8 @@ function module.apply_to_config(config)
 
   wezterm.on("toggle-opacity", function(window)
     local overrides = window:get_config_overrides() or {}
-    local bg_color = "rgba(30, 30, 46, 1)"
-    -- local bg_color = "#000000"
+    -- local bg_color = "rgba(30, 30, 46, 1)"
+    local bg_color = "rgba(0, 19, 26, 1)"
     local transparent = "transparent"
 
     if overrides.window_background_opacity == nil then
