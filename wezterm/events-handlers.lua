@@ -2,6 +2,12 @@ local wezterm = require("wezterm")
 local style = require("style")
 local module = {}
 
+local opacity_transparent = 0.65
+local opacity_opaque = 1
+local opacity_placeholder = opacity_transparent
+local opacity_bg_placeholder = opacity_opaque
+local is_bg = true
+
 function module.apply_to_config(config)
   -- wezterm.on("gui-startup", function(cmd)
   -- 	local _, _, window = wezterm.mux.spawn_window(cmd or {})
@@ -35,31 +41,35 @@ function module.apply_to_config(config)
       overrides.colors = config.colors
     end
 
-    if overrides.window_background_opacity == 1 then
+    if is_bg then
       overrides.background = {}
       overrides.foreground_text_hsb = {
-        brightness = 0.675,
+        brightness = opacity_transparent,
       }
-      overrides.window_background_opacity = 0.675
-      overrides.text_background_opacity = 0.675
+      overrides.window_background_opacity = opacity_placeholder
+      overrides.text_background_opacity = opacity_placeholder
 
       overrides.colors.background = bg_color
       overrides.colors.tab_bar.background = bg_color
       overrides.colors.tab_bar.active_tab.bg_color = bg_color
       overrides.colors.tab_bar.inactive_tab.bg_color = bg_color
       overrides.colors.tab_bar.inactive_tab_hover.bg_color = bg_color
+
+      is_bg = false
     else
       overrides.background = style.background
       overrides.foreground_text_hsb = {
-        brightness = 1,
+        brightness = opacity_opaque,
       }
-      overrides.window_background_opacity = 1
-      overrides.text_background_opacity = 1
+      overrides.window_background_opacity = opacity_bg_placeholder
+      overrides.text_background_opacity = opacity_bg_placeholder
 
       overrides.colors.tab_bar.background = transparent
       overrides.colors.tab_bar.active_tab.bg_color = transparent
       overrides.colors.tab_bar.inactive_tab.bg_color = transparent
       overrides.colors.tab_bar.inactive_tab_hover.bg_color = transparent
+
+      is_bg = true
     end
 
     window:set_config_overrides(overrides)
@@ -72,15 +82,33 @@ function module.apply_to_config(config)
       overrides.background = config.background
     end
 
-    local inc = 0.025
-    local min = 0 + inc
-    local newval = overrides.background[1].hsb.brightness - inc
-
-    if newval < min then
-      newval = min
+    if overrides.window_background_opacity == nil then
+      overrides.window_background_opacity = config.window_background_opacity
     end
 
-    overrides.background[1].hsb.brightness = newval
+    if overrides.background[1] then
+      local incbg = 0.025
+      local minbg = 0 + incbg
+      local newvalbg = overrides.background[1].hsb.brightness - incbg
+
+      if newvalbg < minbg then
+        newvalbg = minbg
+      end
+
+      overrides.background[1].hsb.brightness = newvalbg
+      opacity_bg_placeholder = newvalbg
+    else
+      local inc = 0.05
+      local max = opacity_opaque
+      local newval = overrides.window_background_opacity + inc
+
+      if newval > max then
+        newval = max
+      end
+
+      overrides.window_background_opacity = newval
+      opacity_placeholder = newval
+    end
 
     window:set_config_overrides(overrides)
   end)
@@ -92,15 +120,33 @@ function module.apply_to_config(config)
       overrides.background = config.background
     end
 
-    local inc = 0.025
-    local max = 1 - inc
-    local newval = overrides.background[1].hsb.brightness + inc
-
-    if newval > max then
-      newval = max
+    if overrides.window_background_opacity == nil then
+      overrides.window_background_opacity = config.window_background_opacity
     end
 
-    overrides.background[1].hsb.brightness = newval
+    if overrides.background[1] then
+      local incbg = 0.025
+      local maxbg = opacity_opaque - incbg
+      local newvalbg = overrides.background[1].hsb.brightness + incbg
+
+      if newvalbg > maxbg then
+        newvalbg = maxbg
+      end
+
+      overrides.background[1].hsb.brightness = newvalbg
+      opacity_bg_placeholder = newvalbg
+    else
+      local inc = 0.05
+      local min = 0 + inc
+      local newval = overrides.window_background_opacity - inc
+
+      if newval < min then
+        newval = min
+      end
+
+      overrides.window_background_opacity = newval
+      opacity_placeholder = newval
+    end
 
     window:set_config_overrides(overrides)
   end)
